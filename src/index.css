@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0000FF;
+  --color-primary-light: #1A4DFF;
+  --color-primary-dark: #0000CC;
+  --color-bg-main: #FFFFFF;
+  --color-bg-section: #F8FAFC;
+  --color-bg-alt: #F1F5F9;
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #64748B;
+  --color-border-light: #E2E8F0;
+  
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-main text-text-primary font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-black tracking-tight uppercase;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary to-primary-light text-white px-8 py-5 rounded-xl font-black text-sm uppercase tracking-widest transition-all active:scale-95 disabled:opacity-50 shadow-xl shadow-primary/30 relative overflow-hidden;
+  }
+  
+  .btn-primary::after {
+    content: '';
+    @apply absolute inset-0 bg-white/20 opacity-0 hover:opacity-100 transition-opacity duration-300;
+  }
+
+  .btn-secondary {
+    @apply bg-text-primary text-white px-8 py-5 rounded-xl font-black text-sm uppercase tracking-widest hover:bg-black transition-all active:scale-95 disabled:opacity-50 shadow-xl;
+  }
+  
+  .btn-outline {
+    @apply bg-white text-text-primary border-2 border-border-light px-8 py-5 rounded-xl font-black text-sm uppercase tracking-widest hover:border-primary hover:text-primary transition-all active:scale-95 disabled:opacity-50;
+  }
+
+  .btn-whatsapp {
+    @apply bg-[#25D366] text-white px-8 py-5 rounded-xl font-black text-sm uppercase tracking-widest hover:bg-[#128C7E] transition-all active:scale-95 shadow-xl shadow-green-500/20 flex items-center justify-center gap-3;
+  }
+  
+  .card {
+    @apply bg-white border border-border-light rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)];
+  }
+  
+  .section-padding {
+    @apply py-8 md:py-12 lg:py-16;
+  }
+  
+  .container-max {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .badge-trust {
+    @apply bg-bg-alt text-text-secondary text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest border border-border-light;
+  }
+}
+
+/* Hide scrollbar for category bar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
